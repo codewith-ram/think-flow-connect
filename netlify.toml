@@ -1,17 +1,13 @@
 [build]
   command = "npm run build"
-  publish = ".next"
+  publish = "out"
   functions = ".netlify/functions"
 
 [build.environment]
   NODE_VERSION = "20"
   NPM_FLAGS = "--legacy-peer-deps"
   NEXT_TELEMETRY_DISABLED = "1"
-  NETLIFY_NEXT_PLUGIN_SKIP = "false"
-
-# Next.js plugin
-[[plugins]]
-  package = "@netlify/plugin-nextjs"
+  NETLIFY_NEXT_PLUGIN_SKIP = "true"
 
 # Handle client-side routing
 [[redirects]]
@@ -20,6 +16,16 @@
   status = 200
   force = true
 
+# Disable Next.js plugin for static exports
+# [[plugins]]
+#   package = "@netlify/plugin-nextjs"
+
 # Optional: Lighthouse plugin for performance monitoring
 [[plugins]]
   package = "@netlify/plugin-lighthouse"
+
+# Required for Next.js static exports
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+  [plugins.inputs]
+    skipCache = true
