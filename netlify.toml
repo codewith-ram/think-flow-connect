@@ -1,0 +1,29 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+  functions = ".next/functions"
+
+[build.environment]
+  NODE_VERSION = "20"
+  NPM_FLAGS = "--legacy-peer-deps"
+  NEXT_TELEMETRY_DISABLED = "1"
+  NETLIFY_NEXT_PLUGIN_SKIP = "false"
+
+# Required for Next.js
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+  [plugins.inputs]
+    functions = ".next/functions"
+    buildCommand = "npm run build"
+    nextConfigPath = "./next.config.mjs"
+
+# Handle client-side routing
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  force = true
+
+# Required for Next.js image optimization
+[[plugins]]
+  package = "@netlify/plugin-lighthouse"
