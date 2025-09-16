@@ -16,16 +16,6 @@
   status = 200
   force = true
 
-# Disable Next.js plugin for static exports
-# [[plugins]]
-#   package = "@netlify/plugin-nextjs"
-
-# Optional: Lighthouse plugin for performance monitoring
+# Lighthouse plugin for performance monitoring
 [[plugins]]
   package = "@netlify/plugin-lighthouse"
-
-# Required for Next.js static exports
-[[plugins]]
-  package = "@netlify/plugin-nextjs"
-  [plugins.inputs]
-    skipCache = true

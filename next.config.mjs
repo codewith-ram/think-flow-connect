@@ -12,36 +12,22 @@ const nextConfig = {
   images: {
     unoptimized: true,
     domains: ['cefksoosqhkkcibecdnj.supabase.co'],
+    disableStaticImages: true,
   },
-  // Enable React Strict Mode
-  reactStrictMode: true,
-  // Disable React 18 concurrent features for better compatibility
+  // Disable React Strict Mode for better compatibility
   reactStrictMode: false,
   // Enable SWC minification
   swcMinify: true,
   // Configure page extensions
   pageExtensions: ['tsx', 'ts', 'jsx', 'js'],
-  // Disable server components and use client components only
-  experimental: {
-    serverComponentsExternalPackages: ['@supabase/supabase-js'],
-    serverActions: false,
-  },
-  // Environment variables that should be available on the client side
-  env: {
-    NEXT_PUBLIC_SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL,
-    NEXT_PUBLIC_SUPABASE_ANON_KEY: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
-  },
-  // Disable image optimization API
-  images: {
-    disableStaticImages: true,
-  },
   // Enable static export
   output: 'export',
   // Disable trailing slash for static export
   trailingSlash: false,
-  // Disable image optimization
-  images: {
-    unoptimized: true,
+  // Environment variables that should be available on the client side
+  env: {
+    NEXT_PUBLIC_SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL,
+    NEXT_PUBLIC_SUPABASE_ANON_KEY: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
   },
   // Configure webpack to handle Supabase
   webpack: (config, { isServer }) => {
