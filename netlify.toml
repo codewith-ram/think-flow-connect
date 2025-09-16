@@ -8,6 +8,10 @@
   NPM_FLAGS = "--legacy-peer-deps"
   NEXT_TELEMETRY_DISABLED = "1"
   NETLIFY_NEXT_PLUGIN_SKIP = "true"
+  
+  # Required Supabase environment variables
+  NEXT_PUBLIC_SUPABASE_URL = "https://cefksoosqhkkcibecdnj.supabase.co"
+  NEXT_PUBLIC_SUPABASE_ANON_KEY = "YOUR_ANON_KEY_HERE"  # Replace with your actual anon key
 
 # Handle client-side routing
 [[redirects]]

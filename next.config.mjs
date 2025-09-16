@@ -26,8 +26,8 @@ const nextConfig = {
   trailingSlash: false,
   // Environment variables that should be available on the client side
   env: {
-    NEXT_PUBLIC_SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL,
-    NEXT_PUBLIC_SUPABASE_ANON_KEY: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+    NEXT_PUBLIC_SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://cefksoosqhkkcibecdnj.supabase.co',
+    NEXT_PUBLIC_SUPABASE_ANON_KEY: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '',
   },
   // Configure webpack to handle Supabase
   webpack: (config, { isServer }) => {
@@ -40,6 +40,11 @@ const nextConfig = {
       };
     }
     return config;
+  },
+  // Disable image optimization API
+  images: {
+    loader: 'custom',
+    loaderFile: './src/lib/imageLoader.js',
   },
 };
 
